@@ -5,12 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/nullStyle.css">
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <title>Lesson </title>
 </head>
 <body>
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <div class="container pt-5">
+        <form action="#" method="get">
+            <div class="input-group">
+                <label class="input-group-text" for="hw14_t3_num1">First num: </label>
+                <input type="text" class="form-control" name="hw14_t3_num1" id="hw14_t3_num1">
+                <label class="input-group-text" for="hw14_t3_num2">Sign: </label>
+                <input type="text" class="form-control" name="hw14_t3_num2" id="hw14_t3_num2">
+                <label class="input-group-text" for="hw14_t3_num3">Second num: </label>
+                <input type="text" class="form-control" name="hw14_t3_num3" id="hw14_t3_num3">
+                <input type="submit"  id="hw14_t3_submit" value="Count this!">
+            </div>
+        </form>
+        <p class="hw14_t3_answer0"></p>
+        <h2>Task 4. Your array</h2>
+        <p>Enter your elements with coma. Add inner arrays in quadric brackets</p>
+        <form action="#" method="get">
+            <div class="input-group">
+                <label class="input-group-text" for="hw14_t4">Your data: </label>
+                <input type="text" class="form-control" name="hw14_t4" id="hw14_t4" value="5, 8, 3, [23, true, hello world], [true, false], 123.56, 789">
+                <input type="submit"  id="hw14_t4_submit" value="Add this!">
+            </div>
+        </form>
+    </div>
+
+    
+    <script src="../../bootstrap/js/bootstrap.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
