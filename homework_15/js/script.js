@@ -7,15 +7,14 @@ function memo(fn){
         if (cache[num] == undefined) {
             cache[num] = fn(num);
             cacheArr.push(num);
-            iterator++;
-            if(iterator > 10){
-                let elDoDelete = cacheArr.shift();
-                console.log(elDoDelete);
-                delete cache[elDoDelete];
+            if(++iterator > 10){
+                let elToDelete = cacheArr.shift();
+                console.log("Deleting from cache: " + elToDelete);
+                delete cache[elToDelete];
             }
         }
-        console.table(cache)
-        console.log(`Cache array: ${cacheArr}`)
+        console.log("Cache:");
+        console.table(cache);
         return cache[num];
     }
 }
@@ -24,10 +23,10 @@ function getCall(phoneNum){
 }
 
 let testMemo = memo(getCall);
-console.log(testMemo(1));
-console.log(testMemo(1));
-console.log(testMemo(1));
-console.log(testMemo(2));
+console.log(testMemo(1234));
+console.log(testMemo(1334));
+console.log(testMemo(1334));
+console.log(testMemo(132));
 console.log(testMemo(3));
 console.log(testMemo(4));
 console.log(testMemo(5));
