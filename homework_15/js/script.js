@@ -37,3 +37,5 @@ console.log(testMemo(9));
 console.log(testMemo(10));
 console.log(testMemo(11));
 console.log(testMemo(12));
+console.log(testMemo(13));
+console.log(testMemo(12));
