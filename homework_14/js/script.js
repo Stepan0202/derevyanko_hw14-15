@@ -84,6 +84,87 @@ hw14_submit.addEventListener('click', (e) => {
 });
 
 /*Написати функцію заповнення даними користувача двомірного масиву. Довжину основного масиву та внутрішніх масивів задає користувач. Значення всіх елементів масивів задає користувач.*/
+const hw14_t4_form = document.querySelector("#form_hw14_t4_mainArray");
+const hw14_t4_formsContainer = document.querySelector("#containerFormsForinnerArrays")
+const hw14_t4_form2 = document.querySelector("#formsForInnerArrays")
+const hw14_t4_form3 = document.querySelector("#formsForValues")
+const hw14_t4_array = [];
+let arrayLength = 0;
+hw14_t4_form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    arrayLength = parseInt(e.target.hw14_t4.value)
+    let header = document.createElement("h2");
+    header.innerHTML = "input length of your  inner arrays";
+    hw14_t4_formsContainer.appendChild(header);
+    hw14_t4_formsContainer.appendChild(hw14_t4_form2);
+    for(let i = 0; i < arrayLength; i++){
+        let input = document.createElement("input")
+        input.setAttribute("type", "number");
+        input.setAttribute("name", i);
+        hw14_t4_form2.appendChild(input)
+    }
+    const button = document.createElement('button');
+    button.setAttribute("type", "submit");
+    button.innerHTML = "NEXT"
+    hw14_t4_form2.appendChild(button)
+    hw14_t4_form2.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const header = document.createElement("h2");
+        header.innerHTML = "input values in your inner arrays";
+        hw14_t4_formsContainer.insertAdjacentElement("afterbegin", header)
+        for(let i = 0; i < arrayLength; i++){
+            const length = parseInt(e.target[i].value)
+            let arrNum = document.createElement('p');
+            arrNum.innerHTML = `Array ${i}`;
+            hw14_t4_form3.appendChild(arrNum)
+            hw14_t4_array.push([])
+            for(let j = 0; j < length; j++){
+                const inputData = document.createElement("input")
+                inputData.setAttribute("type", "text");
+                inputData.setAttribute("name", `${i}${j}`);
+                inputData.setAttribute("data-i", i);
+                inputData.setAttribute("data-j", j);
+                arrNum.appendChild(inputData);
+            } 
+        }
+        const submitButton = document.createElement('button');
+        submitButton.setAttribute('type', 'submit');
+        submitButton.innerHTML = "Get my array";
+        hw14_t4_form3.appendChild(submitButton);
+        hw14_t4_form3.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = e.target;
+            for(let i = 0; i < formData.length-1; i++){
+                const inputi = formData[i].dataset.i;
+                hw14_t4_array[inputi].push(formData[i].value);
+            }
+            hw14_t4_formsContainer.innerHTML = `Your array is ${JSON.stringify(hw14_t4_array)}`;
+    
+        })     
+
+    })
+
+})
+
+/*Створити функцію, яка видаляє з рядка всі символи, які ми передали другим аргументом. 'func("hello world", ['l', 'd'])' поверне нам "heo wor". Вихідний рядок та символи для видалення задає користувач*/
+function deleteSymbols(string, symbolsToDelete){
+    const stringArray = string.split("");
+    let resultString = "";
+    stringArray.forEach(el => {
+        let isAdd = true;
+        for(let i = 0; i < symbolsToDelete.length; i++){
+            if(el == symbolsToDelete[i]) isAdd = false;
+        }
+        if (isAdd) resultString += el;
+    })
+    return resultString;
+}
+const hw14_t5_ans = deleteSymbols('string 4 split lalal. 1 Hello 2 World! []!.,$%^1234', ['L', 'd']);
+console.log(`Task 5: ${hw14_t5_ans}`);
+
+
+
+/*
 const hw14_t4_submit = document.querySelector("#hw14_t4_submit");
 hw14_t4_submit.addEventListener('click', (e) => {
     e.preventDefault();
@@ -145,20 +226,4 @@ function tryToParseEl(el){
         }
     }
     return el;
-}
-
-/*Створити функцію, яка видаляє з рядка всі символи, які ми передали другим аргументом. 'func("hello world", ['l', 'd'])' поверне нам "heo wor". Вихідний рядок та символи для видалення задає користувач*/
-function deleteSymbols(string, symbolsToDelete){
-    const stringArray = string.split("");
-    let resultString = "";
-    stringArray.forEach(el => {
-        let isAdd = true;
-        for(let i = 0; i < symbolsToDelete.length; i++){
-            if(el == symbolsToDelete[i]) isAdd = false;
-        }
-        if (isAdd) resultString += el;
-    })
-    return resultString;
-}
-const hw14_t5_ans = deleteSymbols('string 4 split lalal. 1 Hello 2 World! []!.,$%^1234', ['L', 'd']);
-console.log(`Task 5: ${hw14_t5_ans}`);
+} */
